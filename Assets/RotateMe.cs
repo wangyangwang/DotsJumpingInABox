@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateMe : MonoBehaviour
-{
+public class RotateMe : MonoBehaviour {
 
-    public Transform aroundWho;
-    public float angleSpeed = 0.1f;
+    [SerializeField] public Transform aroundWho;
+    [SerializeField] public float angleSpeed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    Vector3 offset = new Vector3 ();
+    Vector3 initialPosition;
+
+    void Start () {
+        initialPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.RotateAround(aroundWho.position, Vector3.up, angleSpeed);
-        transform.LookAt(aroundWho);
-     //   angle += 1f * Time.deltaTime;
+    void Update () {
+        if (aroundWho == null) return;
+        transform.RotateAround (aroundWho.position, Vector3.up, angleSpeed * Time.deltaTime);
+        transform.LookAt (aroundWho);
+
+        //   angle += 1f * Time.deltaTime;
     }
 }

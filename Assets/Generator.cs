@@ -19,8 +19,6 @@ public class Generator : MonoBehaviour
         {
             Vector3 newPosition = sample.transform.position + RandomVec3() * 50;
             var newDot = Instantiate<GameObject>(sample, newPosition, Quaternion.identity, transform);
-            newDot.AddComponent<Dot>();
-
             dots.Add(newDot);
             Rigidbody theRB = newDot.GetComponent<Rigidbody>();
             theRB.AddForce(RandomVec3() * intialForceMult);
